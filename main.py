@@ -19,6 +19,187 @@ def main():
     print("Catarina Erickson e Isabella Mulet")
     print()
 
+    # Loop de excecução
+    done = False
+    while done == False:
+        print("Tarefas")
+        print()
+
+        # Lista itens do enunciado
+        print("a) Matrizes tridiagonais simétricas com diagonal principal constante igual a 2 e subdiagonal igual a -1")
+        print()
+        print('b) Sistema massa-mola com 5 massas de 2kg')
+        print()
+        print('c) Sistema massa-mola com 10 massas de 10kg')
+        print()
+
+        # Lê o item selecionado
+        check = True
+        while(check == True):
+            # Repete até ter uma entrada válida
+            item = (input("Qual item deseja selecionar (a/b/c)?"))
+            if item == "a" or item == "b" or item == "c" :
+                # Verifica se a entrada é valida
+                check = False
+                print()
+
+        # Item a
+        if item == 'a':
+            # Lista métodos a serem escolhidos
+            print('Escolha o método para o cálculo dos autovetores e autovalores:')
+            print()
+            print('a) Algoritmo QR com deslocamento espectral')
+            print()
+            print('b) Algoritmo QR sem deslocamento espectral')
+            print()
+            print('c) Cálculo analítico')
+            print()
+
+            # Lê o método selecionado
+            check = True
+            while(check == True):
+                # Repete até ter uma entrada válida
+                metodo = (input('Qual método deseja selecionar (a/b/c)?'))
+                if metodo == "a" or metodo == "b" or metodo == "c" :
+                    # Verifica se a entrada é valida
+                    check = False
+                    print()
+
+            # Define se há ou não deslocamento espectral
+            if metodo == 'a':
+                deslocamento = True
+            elif metodo =='b':
+                deslocamento = False
+
+            # Lista dimensões a serem escolhidas
+            print('Escolha a dimensão da matriz simétrica n x n:')
+            print()
+            print('a) n = 4')
+            print()
+            print('b) n = 8')
+            print()
+            print('c) n = 16')
+            print()
+            print('d) n = 32')
+            print()
+
+            # Lê a dimensão selecionada
+            check = True
+            while(check == True):
+                # Repete até ter uma entrada válida
+                dim = (input('Qual opção deseja selecionar (a/b/c/d)?'))
+                if dim == "a" or dim == "b" or dim == "c" or dim == "d" :
+                    # Verifica se a entrada é valida
+                    check = False
+                    print()
+                
+            # Define os valores de n
+            if dim == 'a':
+                n = 4
+            elif dim =='b':
+                n = 8
+            elif dim == 'c':
+                n = 16
+            else:
+                n = 32
+
+            # Executa algoritmo QR
+            if metodo != 'c':
+                autovalores, mat_autovetores, itr = teste_qr(n, deslocamento)
+                print(f'Autovalores (diagonal da matriz de autovalores): \n {autovalores}')
+                print()
+                print(f'Matriz de autovetores (contendo os autovetores em suas colunas): \n {mat_autovetores}')
+                print()
+                print(f'Número de iterações: {itr}')
+            # Executa cálculo analítico
+            else:
+                autovalores, mat_autovetores = teste_analitico(n)
+                print(f'Autovalores (diagonal da matriz de autovalores): \n {autovalores}')
+                print()
+                print(f'Matriz de autovetores (contendo os autovetores em suas colunas): \n {mat_autovetores}')
+
+        # Item b
+        if item == 'b':
+            # Lista opções para deslocamento inicial
+            print('Escolha os deslocamentos iniciais de cada massa:')
+            print()
+            print('a) X(0) = -2,-3,-1,-3,-1')
+            print()
+            print('b) X(0) = 1,10,-4,3,-2')
+            print()
+            print('c) X(0) correspondente ao modo de maior frequência')
+
+            # Lê o deslocamento selecionado
+            check = True
+            while(check == True):
+                # Repete até ter uma entrada válida
+                deslc = (input('Qual opção deseja selecionar (a/b/c)?'))
+                if deslc == "a" or deslc == "b" or deslc == "c":
+                    # Verifica se a entrada é valida
+                    check = False
+                    print()
+
+            # Calcula a frequência e os modos de vibração e plota os gráficos para cada caso
+            if deslc == 'a':
+                freq_arr, mat_autovetores = sist_mm(5, [-2,-3,-1,-3,-1], False)
+                print(f'Valores das frequências: \n {freq_arr}')
+                print(f'Matriz de modos de vibração (contendo os autovetores em suas colunas) \n {mat_autovetores}')
+            
+            if deslc == 'b':
+                freq_arr, mat_autovetores = sist_mm(5, [1,10,-4,3,-2], False)
+                print(f'Valores das frequências: \n {freq_arr}')
+                print(f'Matriz de modos de vibração (contendo os autovetores em suas colunas) \n {mat_autovetores}')
+            
+            if deslc == 'c':
+                freq, mat_autovetores = sist_mm(5, [], True)
+                print(f'Valor da frequência (igual para todas as massas): \n {freq}')
+                print(f'Matriz de modos de vibração (contendo os autovetores em suas colunas) \n {mat_autovetores}')
+
+        # Item c
+        if item == 'c':
+            # Lista opções para deslocamento inicial
+            print('Escolha os deslocamentos iniciais de cada massa:')
+            print()
+            print('a) X(0) = -2,-3,-1,-3,-1,-2,-3,-1,-3,-1')
+            print()
+            print('b) X(0) = 1,10,-4,3,-2,1,10,-4,3,-2')
+            print()
+            print('c) X(0) correspondente ao modo de maior frequência')
+
+            # Lê o deslocamento selecionado
+            check = True
+            while(check == True):
+                # Repete até ter uma entrada válida
+                deslc = (input('Qual opção deseja selecionar (a/b/c)?'))
+                if deslc == "a" or deslc == "b" or deslc == "c":
+                    # Verifica se a entrada é valida
+                    check = False
+                    print()
+
+            # Calcula a frequência e os modos de vibração e plota os gráficos para cada caso
+            if deslc == 'a':
+                freq_arr, mat_autovetores = sist_mm(10, [-2,-3,-1,-3,-1,-2,-3,-1,-3,-1], False)
+                print(f'Valores das frequências: \n {freq_arr}')
+                print(f'Matriz de modos de vibração (contendo os autovetores em suas colunas) \n {mat_autovetores}')
+            
+            if deslc == 'b':
+                freq_arr, mat_autovetores = sist_mm(10, [1,10,-4,3,-2,1,10,-4,3,-2], False)
+                print(f'Valores das frequências: \n {freq_arr}')
+                print(f'Matriz de modos de vibração (contendo os autovetores em suas colunas) \n {mat_autovetores}')
+            
+            if deslc == 'c':
+                freq, mat_autovetores = sist_mm(10, [], True)
+                print(f'Valor da frequência (igual para todas as massas): \n {freq}')
+                print(f'Matriz de modos de vibração (contendo os autovetores em suas colunas) \n {mat_autovetores}')
+            
+            
+        # Verifica a necesssidade de uma nova excecução
+        sel = input("Deseja excecutar novamente (s/n)? ")
+        if sel == 'n':
+            done = True
+        
+
+
 # Calcula u de acordo com a heurística de Wilkinson
 def calc_heuristica(alpha_arr, beta_arr, n):
     d = (alpha_arr[n-1] - alpha_arr[n])/2
@@ -207,10 +388,10 @@ def create_A(n):
 
 # Calcula a coordenada(deslocamento) para uma abscissa(tempo) da função xi(t) de cada mola do sistema,
 # incluindo a mudança de variável de Y(t) para X(t)
-def calc_coord(Y_zero, Q_autovetor, A_autovalor, lin, absc):
+def calc_coord(Y_zero, Q_autovetor, freq_arr, lin, absc):
     coord = float(0)
     for col in range(Q_autovetor.shape[1]):
-        coord += Q_autovetor[lin][col]*Y_zero[col]*np.cos(absc*(A_autovalor[col])**(1/2))
+        coord += Q_autovetor[lin][col]*Y_zero[col]*np.cos(absc*(freq_arr[col]))
     return coord
 
 # Plota o gráfico dos deslocamento das massas de um sistema massa mola, dado o vetor de deslocamentos
@@ -222,6 +403,8 @@ def plot_desl(X_inicial, A_principal, A_subdiagonal):
     # Define os autovalores e a matriz de autovetores de A
     A_autovalor, Q_autovetor, k = qr(A_principal, A_subdiagonal, True)
 
+    freq_arr = A_autovalor**(1/2)
+
     # Realiza a mudança de variável de X(0) para Y(0), em que Y(t)=QT*X(t)
     Y_zero = np.dot(transpose(Q_autovetor), X_zero)
 
@@ -229,7 +412,7 @@ def plot_desl(X_inicial, A_principal, A_subdiagonal):
     absc = np.linspace(0, 10, 401)
     # Calcula as coordenadas da função xi(t) de cada mola do sistema
     for i in range(A_autovalor.shape[0]):
-        plt.plot(absc, calc_coord(Y_zero, Q_autovetor, A_autovalor, i, absc), label=f"x{i+1}")
+        plt.plot(absc, calc_coord(Y_zero, Q_autovetor, freq_arr, i, absc), label=f"x{i+1}")
 
     # Define os nomes do eixos, o título e o posicionamento da legenda no gráfico
     plt.xlabel('tempo (s)')
@@ -237,8 +420,9 @@ def plot_desl(X_inicial, A_principal, A_subdiagonal):
     plt.title("Sistema massa mola: deslocamento ao longo do tempo")
     plt.legend(loc=(1.04,0))
     plt.tight_layout() 
+    plt.show(block=False)
 
-    plt.show()
+    return freq_arr, Q_autovetor
 
 # Plota o gráfico dos deslocamento das massas de um sistema massa mola com os deslocamentos iniciais
 # correspondentes ao modo de maior frequência
@@ -252,13 +436,14 @@ def plot_desl_freq(A_principal, A_subdiagonal):
     # Realiza a mudança de variável de X(0) para Y(0), em que Y(t)=QT*X(t)
     Y_zero = np.dot(transpose(Q_autovetor), X_zero)
 
-    # Define o vetor com o valor da maior frequência ao quadrado (freq = raiz de lambda)
-    lmb_arr = lmb*np.ones((A_autovalor.shape))
+    # Define o vetor com o valor da maior frequência (freq = raiz de lambda)
+    freq_arr = (lmb**(1/2))*np.ones((A_autovalor.shape))
+
     # Define as abscissas do gráfico de 0 a 10 segundos a cada 0.025 segundos
     absc = np.linspace(0, 10, 401)
     # Calcula as coordenadas da função xi(t) de cada mola do sistema
     for i in range(A_autovalor.shape[0]):
-        plt.plot(absc, calc_coord(Y_zero, Q_autovetor, lmb_arr, i, absc), label=f'x{i+1}')
+        plt.plot(absc, calc_coord(Y_zero, Q_autovetor, freq_arr, i, absc), label=f'x{i+1}')
 
     # Define os nomes do eixos, o título e o posicionamento da legenda no gráfico
     plt.xlabel('tempo (s)')
@@ -266,8 +451,9 @@ def plot_desl_freq(A_principal, A_subdiagonal):
     plt.title("Sistema massa mola: modo de maior frequência")
     plt.legend(loc=(1.04,0))
     plt.tight_layout()
+    plt.show(block=False)
 
-    plt.show()
+    return freq_arr[0], Q_autovetor
 
 # Retorna o maior autovalor e seu autovetor correspondente, dados o vetor com os autovalores e 
 # a matriz de autovetores
@@ -286,10 +472,19 @@ def select_X_zero(mat_autovalor, mat_autovetor):
     for i in range(mat_autovalor.shape[0]):
         X_zero = np.append(X_zero, mat_autovetor[i][pos])
 
-    print(X_zero)
-
     return lmb, X_zero
+
+# Executa as funções para plotar o gráfico do sistema massa-mola com n massas
+def sist_mm(n, X_zero, max_freq):
+    A_principal, A_subdiagonal = create_A(n)
+
+    if max_freq == True:
+        return plot_desl_freq(A_principal, A_subdiagonal)
+    else:
+        return plot_desl(X_zero, A_principal, A_subdiagonal)
+
 
 #Chama a função main()
 if __name__ == "__main__":
     main()
+
