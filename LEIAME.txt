@@ -1,1 +1,80 @@
-##INSTRUÇÕES DE COMPILAÇÃO E EXECUÇÃO
+O programa tem como objetivo implementar o algoritmo QR e plotar gráficos para a análise de deslocamento de sistemas massa mola
+Ele foi escrito na linguagem Python, versão 3.9.1
+
+As bibliotecas utilizadas são:
+1. Numpy
+2. Matplotlib.pyplot
+
+
+Para o programa rodar corretamente, os imputs inseridos devem ser: 
+
+1. A tarefa a ser executada (item a, b ou c do enunciado do EP1)
+Mensagem: Qual item deseja selecionar (a/b/c)?
+Para o item a (Matrizes tridiagonais simétricas com diagonal principal constante igual a 2 e subdiagonal igual a -1):
+Digitar "a"
+Para o item b (Sistema massa-mola com 5 massas de 2kg):
+Digitar "b"
+Para o item c (Sistema massa-mola com 10 massas de 10kg):
+Digitar "c"
+
+Caso a tarefa selecionada no passo 1. seja o item a: 
+2. O método a ser executado
+Mensagem: Qual método deseja selecionar (a/b/c)?
+Para o algoritmo QR com deslocamento espectral:
+Digitar "a"
+Para o algoritmo QR sem deslocamento espectral:
+Digitar "b"
+Para o cálculo analítico 
+Digitar "c"
+3. A dimensão da matriz simétrica n x n:
+Mensagem: Qual opção deseja selecionar (a/b/c/d)?
+Para n = 4: 
+Digitar "a"
+Para n = "8":
+Digitar "b"
+Para n = 16
+Digitar "c"
+Para n = 32:
+Digitar "d"
+
+Caso a tarefa selecionada no passo 1. seja o item b: 
+4. Deslocamento inicial 
+Mensagem: Qual opção deseja selecionar (a/b/c)?
+Para X(0) = -2,-3,-1,-3,-1:
+Digitar "a"
+Para X(0) = 1,10,-4,3,-2: 
+Digitar "b"
+Para X(0) correspondente ao modo de maior frequência:
+Digitar "c"
+
+Caso a tarefa selecionada no passo 1. seja o item c: 
+5. Deslocamento inicial 
+Mensagem: Qual opção deseja selecionar (a/b/c)?
+Para X(0) = -2,-3,-1,-3,-1,-2,-3,-1,-3,-1:
+Digitar "a"
+Para X(0) = 1,10,-4,3,-2,1,10,-4,3,-2:
+Digitar "b"
+Para X(0) correspondente ao modo de maior frequência:
+Digitar "c"
+
+Caso desejar executar novamente o código:
+6. Se deseja executar o código novamente
+Mensagem: Deseja excecutar novamente (s/n)? 
+Para executar novamente: 
+Digitar "s"
+Para não executar novamente:
+Digitar "n"
+
+Os outputs serão: 
+Item a: 
+Matriz de autovetores; vetor de autovalores e número de iterações.
+Item b e c: 
+Vetor de frequência (para os casos de X(0)correspondente a maior frequência, aparecerá apenas um valor); gráfico de deslocamento por tempo e matriz de modos de vibração.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+AUTORES: 
+
+CATARINA RODRIGUES ERICKSON 
+11258742
+
+ISABELLA MULET E SOUZA
+11259184
