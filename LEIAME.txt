@@ -5,8 +5,7 @@ As bibliotecas utilizadas são:
 1. Numpy
 2. Matplotlib.pyplot
 
-
-Para o programa rodar corretamente, os imputs inseridos devem ser: 
+Para o programa rodar corretamente, os inputs inseridos devem ser: 
 
 1. A tarefa a ser executada (item a, b ou c do enunciado do EP1)
 Mensagem: Qual item deseja selecionar (a/b/c)?

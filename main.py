@@ -22,6 +22,7 @@ def main():
     # Loop de excecução
     done = False
     while done == False:
+        print()
         print("Tarefas")
         print()
 
@@ -111,12 +112,14 @@ def main():
                 print(f'Matriz de autovetores (contendo os autovetores em suas colunas): \n {mat_autovetores}')
                 print()
                 print(f'Número de iterações: {itr}')
+                print()
             # Executa cálculo analítico
             else:
                 autovalores, mat_autovetores = teste_analitico(n)
                 print(f'Autovalores (diagonal da matriz de autovalores): \n {autovalores}')
                 print()
                 print(f'Matriz de autovetores (contendo os autovetores em suas colunas): \n {mat_autovetores}')
+                print()
 
         # Item b
         if item == 'b':
@@ -144,16 +147,19 @@ def main():
                 freq_arr, mat_autovetores = sist_mm(5, [-2,-3,-1,-3,-1], False)
                 print(f'Valores das frequências: \n {freq_arr}')
                 print(f'Matriz de modos de vibração (contendo os autovetores em suas colunas) \n {mat_autovetores}')
+                print()
             
             if deslc == 'b':
                 freq_arr, mat_autovetores = sist_mm(5, [1,10,-4,3,-2], False)
                 print(f'Valores das frequências: \n {freq_arr}')
                 print(f'Matriz de modos de vibração (contendo os autovetores em suas colunas) \n {mat_autovetores}')
+                print()
             
             if deslc == 'c':
                 freq, mat_autovetores = sist_mm(5, [], True)
                 print(f'Valor da frequência (igual para todas as massas): \n {freq}')
                 print(f'Matriz de modos de vibração (contendo os autovetores em suas colunas) \n {mat_autovetores}')
+                print()
 
         # Item c
         if item == 'c':
@@ -181,16 +187,19 @@ def main():
                 freq_arr, mat_autovetores = sist_mm(10, [-2,-3,-1,-3,-1,-2,-3,-1,-3,-1], False)
                 print(f'Valores das frequências: \n {freq_arr}')
                 print(f'Matriz de modos de vibração (contendo os autovetores em suas colunas) \n {mat_autovetores}')
+                print()
             
             if deslc == 'b':
                 freq_arr, mat_autovetores = sist_mm(10, [1,10,-4,3,-2,1,10,-4,3,-2], False)
                 print(f'Valores das frequências: \n {freq_arr}')
                 print(f'Matriz de modos de vibração (contendo os autovetores em suas colunas) \n {mat_autovetores}')
+                print()
             
             if deslc == 'c':
                 freq, mat_autovetores = sist_mm(10, [], True)
                 print(f'Valor da frequência (igual para todas as massas): \n {freq}')
                 print(f'Matriz de modos de vibração (contendo os autovetores em suas colunas) \n {mat_autovetores}')
+                print()
             
             
         # Verifica a necesssidade de uma nova excecução
@@ -262,7 +271,7 @@ def qr(alpha_list, beta_list, deslocamento):
                 c_arr = np.append(c_arr, cos)
                 s_arr = np.append(s_arr, sen)
 
-                # Cria a diagonal principal e a subdiagonal da matriz Qi*Qi-1*...*Q1*A
+                # Cria a diagonal principal e a sobrediagonal da matriz Qi*Qi-1*...*Q1*A
                 alpha_R = alpha_arr.copy()
                 beta_R = beta_arr.copy()
 
@@ -281,7 +290,7 @@ def qr(alpha_list, beta_list, deslocamento):
 
             # Calcula A(k+1)
             for i in range(m-1):
-                # Cria a diangonal principal e a subdiagonal da matriz R*Q1T*...*QiT
+                # Cria a diangonal principal e a sobrediagonal da matriz R*Q1T*...*QiT
                 alpha_next = alpha_arr.copy()
                 beta_next = beta_arr.copy()
 
@@ -347,6 +356,8 @@ def transpose(mat):
 
     return mat_t
 
+# Calcula analiticamente autovalores e autovetores de uma matriz tridiagonal simétrica de ordem n
+# com diagonal principal constante igual a 2 e subdiagonal igual a -1
 def teste_analitico(n):    
     autovalor_analitico = np.array([])
     autovetor_transp = np.zeros((n,n))
